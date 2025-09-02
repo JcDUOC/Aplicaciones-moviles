@@ -2,6 +2,7 @@ package com.example.proyectobase
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -29,6 +30,14 @@ class MainActivity2 : AppCompatActivity() {
 
         editUser.setText(usuarioDesdeOtroActivity.toString())
         editpassword.setText(recibeContrasena.toString())
+
+        val btnIrConver : Button = findViewById(R.id.btnConversor)
+
+        btnIrConver.setOnClickListener {
+            val activityConvert = Intent(this, Activity_peso_dolar::class.java)
+            startActivity(activityConvert)
+
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
