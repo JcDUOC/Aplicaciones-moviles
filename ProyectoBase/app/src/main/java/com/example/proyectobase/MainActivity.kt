@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.time.Duration
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,29 +25,46 @@ class MainActivity : AppCompatActivity() {
         val txMensaje:TextView = findViewById(R.id.tx_mensaje)
 
         // variables para comparar password
-        var usuarioBase = "jean"
+        var usuarioBase = "jean@"
         var passwBase = "12345678"
 
         btnLogin.setOnClickListener {
 
-            if(edUsername.text.toString() == usuarioBase
-                && edPasswd.text.toString() == passwBase){
+            try {
+                println("entro al try")
 
-                // creo un objeto intent
-                val nuevaVentana = Intent(this, MainActivity2::class.java)
-                /**
-                 * creo una variable, llamo al metodo putExtra(nombre_put, valor_variable)
-                 *
-                 */
-                nuevaVentana.putExtra("sesion", edUsername.text.toString())
-                nuevaVentana.putExtra("par_contrasena", edPasswd.text.toString() )                //abrimos el activity
-                startActivity(nuevaVentana)
-
-                txMensaje.text = "login OK"
+                var reg: Regex = edUsername.text.toString().toRegex()
+                check(reg.containsMatchIn("@"))
 
 
-            }else{
-                txMensaje.text = "login NO"
+
+
+                if (edUsername.text.toString() == usuarioBase
+                    && edPasswd.text.toString() == passwBase
+                ) {
+
+                    // creo un objeto intent
+                    val nuevaVentana = Intent(this, MainActivity2::class.java)
+                    /**
+                     * creo una variable, llamo al metodo putExtra(nombre_put, valor_variable)
+                     *
+                     */
+                    nuevaVentana.putExtra("sesion", edUsername.text.toString())
+                    nuevaVentana.putExtra(
+                        "par_contrasena",
+                        edPasswd.text.toString()
+                    )                //abrimos el activity
+                    startActivity(nuevaVentana)
+
+                    txMensaje.text = "login OK"
+
+
+                } else {
+                    txMensaje.text = "login NO"
+                }
+
+            } catch (e : Exception){
+                Toast.makeText(this, "el user es incorrecto", Toast.LENGTH_LONG).show()
             }
 
         }
