@@ -33,8 +33,11 @@ class MainActivity : AppCompatActivity() {
             try {
                 println("entro al try")
 
-                var reg: Regex = edUsername.text.toString().toRegex()
-                check(reg.containsMatchIn("@"))
+                val user: String = edUsername.text.toString()
+                val reg : Regex = Regex("@")
+                check(reg.containsMatchIn(user))
+
+                println("paso el check")
 
 
 
