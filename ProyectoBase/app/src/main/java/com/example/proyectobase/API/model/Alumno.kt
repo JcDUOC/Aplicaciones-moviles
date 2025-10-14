@@ -1,6 +1,8 @@
-package com.example.proyectobase.API
+package com.example.proyectobase.API.model
 
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Alumno(
     val id: Int,
     val nombre: String,

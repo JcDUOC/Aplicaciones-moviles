@@ -1,5 +1,6 @@
 package com.example.proyectobase.API
 
+import com.example.proyectobase.API.model.Alumno
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
