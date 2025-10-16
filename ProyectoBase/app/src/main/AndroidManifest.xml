@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ProyectoBase"
         tools:targetApi="31">
         <activity
+            android:name=".VisualizarAlumnos"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity4"
             android:exported="false"
             android:theme="@style/Theme.ProyectoBase" />

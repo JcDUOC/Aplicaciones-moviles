@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import kotlin.getValue
 
-object Prueba_Cliente_Retrofit {
+object retrofitAlumnos {
     private const val BASE_URL = "https://uxdynamic.cl/"
 
     private val logging = HttpLoggingInterceptor().apply {
